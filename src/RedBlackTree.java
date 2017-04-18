@@ -1,18 +1,11 @@
 /**
  * Created by robg on 4/17/17.
  */
-public class RedBlackTree {
+public class RedBlackTree <Key extends Comparable<Key>> {
     public void insert(String d) {
     }
 
-      public static interface Visitor
-      {
-      	/**
-         This method is called at each node.
-         @param n the visited node
-      	 */
-      	void visit(Node n);
-      }
+
 
 
      public void preOrderVisit(Visitor v)
