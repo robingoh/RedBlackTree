@@ -27,14 +27,22 @@ public class RedBlackTree < T extends Comparable<T> > {
     public void leftRotate(Node x) {
         Node y = x.getRightChild();
         Node B = y.getLeftChild();
+        y.setParent(x.getParent());
         x.setRightChild(B);
         y.setLeftChild(x);
+        if (x == root) {
+            root = y;
+        }
     }
     public void rightRotate(Node y) {
         Node x = y.getLeftChild();
         Node B = x.getRightChild();
+        x.setParent(y.getParent());
         y.setLeftChild(B);
         x.setRightChild(y);
+        if (y == root) {
+            root = x;
+        }
     }
     public void fixTree(Node current) {
         if (current == root) {
@@ -44,8 +52,9 @@ public class RedBlackTree < T extends Comparable<T> > {
         if (current.getParent().isBlack()) {
             return;
         }
-        if (current.isRed() && current.getParent().isRed()) {
-            Node parent = current.getParent();
+        Node parent = current.getParent();
+
+        if (current.isRed() && parent.isRed()) {
             Node grandParent = current.getGrandParent();
             Node aunt = current.getAunt();
             if (aunt == null || aunt.isBlack()) {

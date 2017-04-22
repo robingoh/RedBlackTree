@@ -43,7 +43,6 @@ public class RBTTester {
         }
         MyVisitor v = new MyVisitor();
         t.preOrderVisit(v);
-        System.out.println(v.result);
         return v.result;
     }
 

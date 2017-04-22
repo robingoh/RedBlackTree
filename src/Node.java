@@ -27,9 +27,9 @@ public class Node < T extends Comparable<T> >{
 
     public Node getSibling() {
         if (this.isLeftChild()) {
-            return this.rightChild;
+            return this.parent.rightChild;
         } else if (this.isRightChild()) {
-            return this.leftChild;
+            return this.parent.leftChild;
         } else
             return null;
     }
@@ -63,6 +63,7 @@ public class Node < T extends Comparable<T> >{
         } else if (key.compareTo(this.getKey()) > 0) {
             if (rightChild == null) {
                 setRightChild(node);
+                return node;
 //                return true;
             } else {
                 return rightChild.add(key);
